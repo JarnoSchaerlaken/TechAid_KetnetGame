@@ -18,6 +18,6 @@ public class ScoreReader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _minigameScore.text = ScoreRecordKeeper.MinigameScores[_minigameIndex].ToString();
+        _minigameScore.text = ScoreManager.GetScore(_minigameIndex).ToString();
     }
 }

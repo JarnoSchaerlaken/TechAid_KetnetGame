@@ -19,9 +19,6 @@ public class ScoreWriter : MonoBehaviour
     void Update()
     {
         int score = int.Parse(_minigameScore.text);
-        if (score > ScoreRecordKeeper.MinigameScores[_minigameIndex])
-        {
-            ScoreRecordKeeper.UpdateScore(score, _minigameIndex);
-        }
+        ScoreManager.UpdateScore(score, _minigameIndex);
     }
 }
