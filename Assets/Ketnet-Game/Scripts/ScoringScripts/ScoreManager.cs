@@ -5,7 +5,6 @@ public class ScoreManager : MonoBehaviour
 {
 	public static ScoreManager Instance;
 
-	// TODO: Encapsulate properly!
 	private static List<int> minigameScores = new List<int>(2) { 0, 0 };
 
 	private void Awake()

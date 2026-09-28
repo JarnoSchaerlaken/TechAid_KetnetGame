@@ -9,13 +9,6 @@ public class ScoreReader : MonoBehaviour
     [SerializeField]
     private int _minigameIndex;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         _minigameScore.text = ScoreManager.GetScore(_minigameIndex).ToString();
