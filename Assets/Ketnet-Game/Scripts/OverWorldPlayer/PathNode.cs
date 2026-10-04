@@ -6,6 +6,8 @@ public class PathNode : MonoBehaviour
     [SerializeField]Transform _planet;
     public List<PathNode> Conections;
 
+    public string NextSceneName;
+
     void Awake()
     {
         float height = _planet.lossyScale.x / 2;

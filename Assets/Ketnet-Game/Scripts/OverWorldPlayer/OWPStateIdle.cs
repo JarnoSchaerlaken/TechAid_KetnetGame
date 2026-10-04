@@ -24,6 +24,8 @@ public partial class OverWorldPlayer
                 arrow.GetComponent<PathArrow>().ArrowClicked += (s, e) => StartMovingTo(node);
             }
 
+            NavigationManager.SetCurrentNode(Context._currentNode);
+
             base.OnEnter();
         }
 

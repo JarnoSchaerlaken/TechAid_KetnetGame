@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/OverworldTestScene.unity
-    guid: 3654b4845c7b2af4289f4ae7b68d833a
+    path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/AreaProgressionTestScenes/TestPlanet1.unity
+    guid: 436b92527fe5de947a546bd2da221036
   - enabled: 1
-    path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/MinigameTestScene.unity
-    guid: 2e4e20a42aa12bf4cacc45a08613f2ba
+    path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/AreaProgressionTestScenes/TestPlanet2.unity
+    guid: 7d94533c38af8554bba3869375148a33
+  - enabled: 1
+    path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/AreaProgressionTestScenes/TestMinigame1.unity
+    guid: 3be6d599498917546b5f956d9125e049
+  - enabled: 1
+    path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/AreaProgressionTestScenes/TestMinigame2.unity
+    guid: 5c587dbe3c7d22d4fa65f958592ae66f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

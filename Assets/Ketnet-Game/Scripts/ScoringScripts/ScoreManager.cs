@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -7,7 +8,8 @@ public class ScoreManager : MonoBehaviour
 
 	private static List<int> minigameScores = new List<int>(2) { 0, 0 };
 
-	private void Awake()
+
+    private void Awake()
 	{
 		if (Instance != null)
 		{
@@ -37,4 +39,6 @@ public class ScoreManager : MonoBehaviour
 	{
 		return minigameScores[minigameIndex];
 	}
+
+	
 }
