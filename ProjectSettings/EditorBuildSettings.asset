@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Ketnet-Game/Scenes/Area1.unity
+    guid: 029be0042c63d064d87a0b490fac7656
+  - enabled: 0
     path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/AreaProgressionTestScenes/TestPlanet1.unity
     guid: 436b92527fe5de947a546bd2da221036
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/AreaProgressionTestScenes/TestPlanet2.unity
     guid: 7d94533c38af8554bba3869375148a33
   - enabled: 1

@@ -115,7 +115,6 @@ public class NavigationManager : MonoBehaviour
         }
         else
         {
-            Instance._nextPlanetButton.SetActive(false);
             Instance._notEnoughDataMessage.StartDialogue();
         }
     }
