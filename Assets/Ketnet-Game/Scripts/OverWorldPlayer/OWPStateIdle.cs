@@ -25,6 +25,7 @@ public partial class OverWorldPlayer
             }
 
             NavigationManager.SetCurrentNode(Context._currentNode);
+            NavigationManager.Instance?.UpdateUI();
 
             base.OnEnter();
         }

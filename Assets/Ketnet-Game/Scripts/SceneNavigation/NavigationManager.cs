@@ -24,6 +24,9 @@ public class NavigationManager : MonoBehaviour
     [SerializeField]
     private Canvas _ui;
 
+    [SerializeField]
+    private Dialogue _notEnoughDataMessage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,6 +45,11 @@ public class NavigationManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+
+    }
+
+    public void UpdateUI ()
     {
         if (_currentNode == null)
         {
@@ -73,7 +81,7 @@ public class NavigationManager : MonoBehaviour
             _enterButtton.SetActive(false);
             _nextPlanetButton.SetActive(false);
             _returnToLastPlanetButton.SetActive(false);
-        }
+        }        
     }
 
     public static void SetCurrentNode(PathNode node)
@@ -104,6 +112,11 @@ public class NavigationManager : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene(_currentNode.NextSceneName);
             ActivePlanetName = _currentNode.NextSceneName;
             _currentNode = null;
+        }
+        else
+        {
+            Instance._nextPlanetButton.SetActive(false);
+            Instance._notEnoughDataMessage.StartDialogue();
         }
     }
 
