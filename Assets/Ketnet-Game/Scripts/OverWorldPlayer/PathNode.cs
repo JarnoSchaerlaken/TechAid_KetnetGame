@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PathNode : MonoBehaviour
 {
     [SerializeField]Transform _planet;
     public List<PathNode> Conections;
+    public UnityEvent OnPlayerLandOnNode;
+    public UnityEvent OnPlayerLeaveNode;
 
     public string NextSceneName;
 

@@ -27,6 +27,8 @@ public partial class OverWorldPlayer
             NavigationManager.SetCurrentNode(Context._currentNode);
             NavigationManager.Instance?.UpdateUI();
 
+            Context._currentNode.OnPlayerLandOnNode.Invoke();
+
             base.OnEnter();
         }
 
@@ -49,6 +51,7 @@ public partial class OverWorldPlayer
 
         void StartMovingTo (PathNode nextNode)
         {
+            Context._currentNode.OnPlayerLeaveNode.Invoke();
             FSM.MovingState.Target = nextNode;
             FSM.ChangeTo(FSM.MovingState);
         }

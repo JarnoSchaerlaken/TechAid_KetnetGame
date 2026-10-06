@@ -4,7 +4,7 @@ using UnityEngine;
 public class ScoreReader : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI _minigameScore;
+    private TMP_Text _minigameScore;
 
     [SerializeField]
     private int _minigameIndex;
