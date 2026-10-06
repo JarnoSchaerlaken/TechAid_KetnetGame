@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ProjectOnPlanet : MonoBehaviour
 {
-    public enum PlanetShape {Sphere, Cylinder}
+    public enum PlanetShape {Sphere, Cylinder, Plane}
     [SerializeField]PlanetShape _shape;
     [SerializeField]Transform _planetTransform;
 
@@ -20,6 +20,7 @@ public class ProjectOnPlanet : MonoBehaviour
                 Vector3 dir = (transform.position - _planetTransform.position).normalized;
 
                 SetPosAndRotation(radius * dir + _planetTransform.position, dir);
+
                 break;
             case PlanetShape.Cylinder:
                 radius = _planetTransform.lossyScale.x / 2;
@@ -31,6 +32,14 @@ public class ProjectOnPlanet : MonoBehaviour
                 dir.Normalize();
 
                 SetPosAndRotation(radius * dir + (height * _planetTransform.up) + _planetTransform.position, dir);
+
+                break;
+            case PlanetShape.Plane:
+                Vector3 delta = transform.position - _planetTransform.position;
+                Vector3 deltaFromSurface = Vector3.Dot(_planetTransform.up, delta) * _planetTransform.up;
+
+                SetPosAndRotation(_planetTransform.position + delta - deltaFromSurface, _planetTransform.up);
+
                 break;
         }
     }
