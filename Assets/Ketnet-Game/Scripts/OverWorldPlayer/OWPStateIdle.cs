@@ -29,6 +29,10 @@ public partial class OverWorldPlayer
 
             Context._currentNode.OnPlayerLandOnNode.Invoke();
 
+            Context.transform.position = Context._currentNode.transform.position;
+            Context._height = 0;
+            Context.transform.rotation = Context._currentNode.transform.rotation;
+
             base.OnEnter();
         }
 

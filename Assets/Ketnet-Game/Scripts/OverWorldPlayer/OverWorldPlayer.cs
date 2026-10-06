@@ -10,15 +10,6 @@ public partial class OverWorldPlayer : MonoBehaviour
     PathNode _currentNode;
     OWPFSM _fsm;
 
-    Quaternion _rotation
-    {
-        get { return transform.rotation; }
-        set
-        {
-            transform.rotation = value;
-        }
-    }
-
     float _height
     {
         get { return _modelPivot.localPosition.y; }
@@ -37,8 +28,7 @@ public partial class OverWorldPlayer : MonoBehaviour
 
     void Start()
     {
-        _height = _planetRadius;
-        _rotation = _currentNode.transform.rotation;
+        transform.position = _currentNode.transform.position;
     }
 
     void Update()
