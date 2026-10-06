@@ -30,6 +30,15 @@ public class PathArrow : MonoBehaviour
     {
         _actions = new();
         
+
+        _actions.Player.TouchPosition.performed += ctx =>
+        {
+            Ray ray = _cam.ScreenPointToRay(ctx.ReadValue<Vector2>());
+            if (_collider.Raycast(ray, out RaycastHit hitInfo, 99) && _actions.Player.Click.WasPerformedThisFrame())
+            {
+                ArrowClicked?.Invoke(this, EventArgs.Empty);
+            }
+        };
         _actions.Player.MousePos.performed += ctx => _mousePos = ctx.ReadValue<Vector2>();
         _actions.Player.Click.performed += ctx =>
         {
