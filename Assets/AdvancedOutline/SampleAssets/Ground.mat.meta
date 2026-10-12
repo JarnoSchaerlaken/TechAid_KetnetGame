@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e29680f639697454eb8d49c1db8bc196
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 384346
+  packageName: Advanced Outline Shader
+  packageVersion: 1.0
+  assetPath: Assets/AdvancedOutline/SampleAssets/Ground.mat
+  uploadId: 926934
