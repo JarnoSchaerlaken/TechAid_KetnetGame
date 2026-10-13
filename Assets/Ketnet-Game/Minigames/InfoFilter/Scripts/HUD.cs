@@ -13,7 +13,7 @@ namespace InfoFilter
 		private InfoFilter.Score _scoreObject;
 		private InfoFilter.Theme _themeObject;
 
-		private void Start()
+		private void Awake()
 		{
 			var health = FindAnyObjectByType<InfoFilter.Health>();
 			var score = FindAnyObjectByType<InfoFilter.Score>();
