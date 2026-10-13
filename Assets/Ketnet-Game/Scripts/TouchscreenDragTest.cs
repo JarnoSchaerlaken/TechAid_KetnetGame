@@ -10,11 +10,28 @@ public class TouchscreenDragTest : MonoBehaviour
 
     private bool _itemHeld = false;
 
-    private bool _isDragging = false;
+    private bool _isDraggingValue;
+    private bool _isDragging
+    {
+        get { return _isDraggingValue; }
+        set
+        {
+            if (_isDraggingValue == value) return;
+            _isDraggingValue = value;
+
+            if (value)
+            {
+                PickUpItem();
+            }
+            else
+            {
+                DropItem();
+            }
+        }
+    }
 
     private Vector2 _mousePosition;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
@@ -49,13 +66,17 @@ public class TouchscreenDragTest : MonoBehaviour
         };
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
        DropItem();
     }
 
-    private void DropItem()
+    public virtual void PickUpItem ()
+    {
+        
+    }
+
+    public virtual void DropItem()
     {
         if (!_itemHeld && _object.transform.position.y > 0 && !_isDragging)
         {

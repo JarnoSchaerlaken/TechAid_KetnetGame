@@ -935,6 +935,10 @@ PrefabInstance:
       value: MinigameNode (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3781586947314682732, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
+      propertyPath: NextSceneName
+      value: AlgorithmGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781586947314682732, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
       propertyPath: _planetTransform
       value: 
       objectReference: {fileID: 1434403705}
@@ -1191,7 +1195,7 @@ PrefabInstance:
       objectReference: {fileID: 1149108674}
     - target: {fileID: 1239286932019598957, guid: bbb4450d29d4c5b42961d630f0e30942, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadNextPlanet
+      value: LoadNextScene
       objectReference: {fileID: 0}
     - target: {fileID: 1671108301740322967, guid: bbb4450d29d4c5b42961d630f0e30942, type: 3}
       propertyPath: m_IsActive
@@ -1203,7 +1207,7 @@ PrefabInstance:
       objectReference: {fileID: 1149108674}
     - target: {fileID: 2030470008206894286, guid: bbb4450d29d4c5b42961d630f0e30942, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadNextScene
+      value: LoadNextPlanet
       objectReference: {fileID: 0}
     - target: {fileID: 5159100458543541667, guid: bbb4450d29d4c5b42961d630f0e30942, type: 3}
       propertyPath: m_IsActive
@@ -1896,7 +1900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5456163917682475408, guid: e3a50256f1a78a944a1807f8af4aa368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.262
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5456163917682475408, guid: e3a50256f1a78a944a1807f8af4aa368, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1904,7 +1908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5456163917682475408, guid: e3a50256f1a78a944a1807f8af4aa368, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.24755
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5456163917682475408, guid: e3a50256f1a78a944a1807f8af4aa368, type: 3}
       propertyPath: m_LocalRotation.w
