@@ -7,6 +7,18 @@ namespace InfoFilter
 	{
 		[SerializeField] private float _spawnRadius = 12F;
 		[SerializeField] private float _spawnInterval = 2F;
+		[SerializeField] private GameObject _dataObjectTemplate = null;
+
+		public float SpawnRadius => _spawnRadius;
+
+		private void Awake()
+		{
+			if (_dataObjectTemplate == null)
+			{
+				Debug.LogError("Missing dependencies!", this);
+				return;
+			}
+		}
 
 		private void Start()
 		{
@@ -20,7 +32,7 @@ namespace InfoFilter
 			while ( true )
 			{
 				MoveToRandomPosition();
-				// TODO: Spawn Data object.
+				SpawnData();
 				yield return new WaitForSeconds(_spawnInterval);
 			}
 		}
@@ -30,8 +42,18 @@ namespace InfoFilter
 			// Need a trigonometry refresher?
 			// I got you covered: https://medium.com/eincode/trigonometry-for-game-development-34acca285ae3
 			float angle = Random.Range( 0F, 2F * Mathf.PI );
-			Vector2 position = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * _spawnRadius;
+			Vector2 position = new Vector2( Mathf.Cos( angle ), Mathf.Sin( angle ) ) * _spawnRadius;
 			transform.position = position;
+		}
+
+		private void SpawnData()
+		{
+			if (_dataObjectTemplate == null)
+			{
+				return;
+			}
+
+			Instantiate(_dataObjectTemplate, transform.position, transform.rotation);
 		}
 	}
 }

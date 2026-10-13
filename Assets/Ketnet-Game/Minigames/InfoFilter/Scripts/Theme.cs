@@ -4,6 +4,8 @@ namespace InfoFilter
 {
 	public sealed class Theme : MonoBehaviour
 	{
-		public Color _theme;
+		private Color _activeTheme = Color.red;
+
+		public Color ActiveTheme { get { return _activeTheme; } }
 	}
 }

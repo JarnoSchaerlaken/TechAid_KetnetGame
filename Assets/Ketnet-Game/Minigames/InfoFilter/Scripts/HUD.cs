@@ -50,7 +50,7 @@ namespace InfoFilter
 
 			if ( _themeLabel != null )
 			{
-				_themeLabel.color = _themeObject._theme;
+				_themeLabel.color = _themeObject.ActiveTheme;
 			}
 		}
 	}
