@@ -38,6 +38,7 @@ namespace SocialMediaAlgorithmGame
                 _game.AddScore(50);
             }
             _textBoxObject.SetActive(true);
+            _game.RemoveTutorial();
         }
     }
 }
