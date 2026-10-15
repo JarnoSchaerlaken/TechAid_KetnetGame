@@ -13,12 +13,9 @@ namespace SocialMediaAlgorithmGame
         [SerializeField]TMP_Text _text;
         [SerializeField]GameObject _textBoxObject;
 
-        void Start()
+        public void AddOpinion (AlgorithmTopic topic, float opinion)
         {
-            foreach (AlgorithmTopic at in _game.Topics)
-            {
-                _opinions.Add(at, Random.value);
-            }
+            _opinions.Add(topic, opinion);
         }
 
         public void GiveTopic (AlgorithmTopic topic)

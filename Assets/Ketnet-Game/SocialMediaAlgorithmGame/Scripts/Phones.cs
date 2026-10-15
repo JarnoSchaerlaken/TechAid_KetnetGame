@@ -6,11 +6,31 @@ namespace SocialMediaAlgorithmGame
     {
         public static Phones Instance;
         [SerializeField]GameObject[] _phones;
+        [SerializeField]AlgorithmGame _game;
         [SerializeField]float _consumeDistance;
 
         void Awake()
         {
             Instance = this;
+        }
+
+        void Start()
+        {
+            foreach (AlgorithmTopic at in _game.Topics)
+            {
+                Vector3 randomVector = new(Random.value, Random.value, Random.value);
+                randomVector.Normalize();
+
+                randomVector.x *= randomVector.x;
+                randomVector.y *= randomVector.y;
+                randomVector.z *= randomVector.z;
+
+                randomVector *= 1.75f;
+                
+                _phones[0].GetComponent<Phone>().AddOpinion(at, randomVector.x);
+                _phones[1].GetComponent<Phone>().AddOpinion(at, randomVector.y);
+                _phones[2].GetComponent<Phone>().AddOpinion(at, randomVector.z);
+            }
         }
 
         public GameObject GetClosestPhone (Vector3 pos)

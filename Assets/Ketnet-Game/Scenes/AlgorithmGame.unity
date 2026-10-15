@@ -980,6 +980,7 @@ MonoBehaviour:
   - {fileID: 1236233691}
   - {fileID: 419909455}
   - {fileID: 958186624}
+  _game: {fileID: 132118250}
   _consumeDistance: 1.5
 --- !u!4 &1394483441
 Transform:
