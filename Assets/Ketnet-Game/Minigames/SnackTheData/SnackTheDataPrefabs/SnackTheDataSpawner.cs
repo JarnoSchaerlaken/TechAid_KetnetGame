@@ -29,7 +29,7 @@ namespace SnackTheData
         private SnackTheDataMovement _player;
 
         [SerializeField]
-        private int _maxPickups = 9;
+        private int _maxPickups = 25;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -88,16 +88,18 @@ namespace SnackTheData
 
         public void SpawnPickup()
         {
-            float x = Random.Range(0.05f, 0.45f);
-            float y = Random.Range(0.05f, 0.95f);
+            float x = Random.Range(0.05f, 0.75f);
+            float y = Random.Range(0.05f, 0.90f);
+
+            if (x > 0.37f && x < 0.47f && y > 0.45f && y < 0.55f) return;
 
             Vector3 position = Camera.main.ViewportToScreenPoint(new Vector3(x, y, 0));
 
-            if (_amountPickup1 >= _maxPickups - _player.AllowedAmountBetweenHighestAndLowest * 2)
+            if (_amountPickup1 >= _maxPickups - _player.AllowedAmountBetweenHighestAndLowest * 3)
             {
                 _spawnedPickups.Add(Instantiate(_pickupPrefabs[1], position, Quaternion.identity, _playField.transform));
             }
-            else if (_amountPickup2 >= _maxPickups - _player.AllowedAmountBetweenHighestAndLowest * 2)
+            else if (_amountPickup2 >= _maxPickups - _player.AllowedAmountBetweenHighestAndLowest * 3)
             {
                 _spawnedPickups.Add(Instantiate(_pickupPrefabs[0], position, Quaternion.identity, _playField.transform));
             }

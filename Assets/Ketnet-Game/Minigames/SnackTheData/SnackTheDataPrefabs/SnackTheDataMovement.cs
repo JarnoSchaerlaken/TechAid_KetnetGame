@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
@@ -28,6 +29,10 @@ namespace SnackTheData
 
         public bool GameOver = false;
 
+        private InputSystem_Actions _actions;
+
+        private float _swipeDistance = 1f;
+
         [SerializeField]
         private GameObject _endScreen;
 
@@ -44,10 +49,38 @@ namespace SnackTheData
 
         private GameObject _segmentToBeAdded;
 
+        private Vector2 _swipeDirection;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            _actions = new InputSystem_Actions();
 
+            _actions.Enable();
+
+            _actions.Player.Click.canceled += TouchComplete;
+
+            _actions.Player.Swipe.performed += ProcessSwipe;
+
+            _actions.Player.Move.performed += ctx =>
+            {
+                if (ctx.ReadValue<Vector2>().x == 1)
+                {
+                    MoveRight();
+                }
+                else if (ctx.ReadValue<Vector2>().x == -1)
+                {
+                    MoveLeft();
+                }
+                else if (ctx.ReadValue<Vector2>().y == -1)
+                {
+                    MoveDown();
+                }
+                else if (ctx.ReadValue<Vector2>().y == 1)
+                {
+                    MoveUp();
+                }
+            };
         }
 
         // Update is called once per frame
@@ -189,7 +222,8 @@ namespace SnackTheData
         {
             if (Direction != Vector3.zero)
             {
-                if (Player.transform.position.x < 50 || Player.transform.position.x > Screen.width / 2 - 50 || Player.transform.position.y < 50 || Player.transform.position.y > Screen.height - 50)
+                Vector3 playerViewportPosition = Camera.main.ScreenToViewportPoint(Player.transform.position);
+                if (playerViewportPosition.x < 0.01f || playerViewportPosition.x > 0.83f || playerViewportPosition.y < 0.01f || playerViewportPosition.y > 0.99f)
                 {
                     GameOver = true;
                 }
@@ -248,6 +282,33 @@ namespace SnackTheData
         public void MoveRight()
         {
             if (Direction != Vector3.left) Direction = Vector3.right;
+        }
+
+        private void TouchComplete(InputAction.CallbackContext ctx)
+        {
+            if (Mathf.Abs(_swipeDirection.magnitude) < _swipeDistance) return;
+
+            if (_swipeDirection.x > 0 && Mathf.Abs(_swipeDirection.x) > Mathf.Abs(_swipeDirection.y))
+            {
+                MoveRight();
+            }
+            else if (_swipeDirection.x < 0 && Mathf.Abs(_swipeDirection.x) > Mathf.Abs(_swipeDirection.y))
+            {
+                MoveLeft();
+            }
+            else if (_swipeDirection.y > 0 && Mathf.Abs(_swipeDirection.x) < Mathf.Abs(_swipeDirection.y))
+            {
+                MoveUp();
+            }
+            else if (_swipeDirection.y < 0 && Mathf.Abs(_swipeDirection.x) < Mathf.Abs(_swipeDirection.y))
+            {
+                MoveDown();
+            }
+        }
+
+        private void ProcessSwipe(InputAction.CallbackContext ctx)
+        {
+            _swipeDirection = ctx.ReadValue<Vector2>();
         }
     }
 }

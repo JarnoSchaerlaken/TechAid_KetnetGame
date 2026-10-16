@@ -211,6 +211,16 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": true,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Swipe"",
+                    ""type"": ""Value"",
+                    ""id"": ""83ec305c-ad6e-4b2e-9d69-4cc00d5dad48"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -640,6 +650,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TouchPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fef6b25b-ad2c-47c9-a358-ef488b211098"",
+                    ""path"": ""<Touchscreen>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1249,6 +1270,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
         m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
         m_Player_TouchPosition = m_Player.FindAction("TouchPosition", throwIfNotFound: true);
+        m_Player_Swipe = m_Player.FindAction("Swipe", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1354,6 +1376,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MousePos;
     private readonly InputAction m_Player_Click;
     private readonly InputAction m_Player_TouchPosition;
+    private readonly InputAction m_Player_Swipe;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1413,6 +1436,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/TouchPosition".
         /// </summary>
         public InputAction @TouchPosition => m_Wrapper.m_Player_TouchPosition;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Swipe".
+        /// </summary>
+        public InputAction @Swipe => m_Wrapper.m_Player_Swipe;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1475,6 +1502,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TouchPosition.started += instance.OnTouchPosition;
             @TouchPosition.performed += instance.OnTouchPosition;
             @TouchPosition.canceled += instance.OnTouchPosition;
+            @Swipe.started += instance.OnSwipe;
+            @Swipe.performed += instance.OnSwipe;
+            @Swipe.canceled += instance.OnSwipe;
         }
 
         /// <summary>
@@ -1522,6 +1552,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TouchPosition.started -= instance.OnTouchPosition;
             @TouchPosition.performed -= instance.OnTouchPosition;
             @TouchPosition.canceled -= instance.OnTouchPosition;
+            @Swipe.started -= instance.OnSwipe;
+            @Swipe.performed -= instance.OnSwipe;
+            @Swipe.canceled -= instance.OnSwipe;
         }
 
         /// <summary>
@@ -1906,6 +1939,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTouchPosition(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Swipe" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwipe(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

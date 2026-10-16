@@ -125,6 +125,16 @@
                     "interactions": "",
                     "initialStateCheck": true,
                     "priority": 0
+                },
+                {
+                    "name": "Swipe",
+                    "type": "Value",
+                    "id": "83ec305c-ad6e-4b2e-9d69-4cc00d5dad48",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -554,6 +564,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "TouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fef6b25b-ad2c-47c9-a358-ef488b211098",
+                    "path": "<Touchscreen>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
