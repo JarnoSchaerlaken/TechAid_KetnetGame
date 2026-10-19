@@ -244,7 +244,7 @@ MonoBehaviour:
   _topicSpawnPoint: {fileID: 369743567}
   _scoreText: {fileID: 1787569193}
   _timerText: {fileID: 1855192056}
-  _gameLenghtInSeconds: 30
+  _gameLenghtInSeconds: 10
   _tutorial: {fileID: 1704470271}
   _winScreen: {fileID: 359988120}
   _loseScreen: {fileID: 94466256}

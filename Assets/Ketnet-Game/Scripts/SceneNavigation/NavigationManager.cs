@@ -6,29 +6,14 @@ public class NavigationManager : MonoBehaviour
 {
     public static NavigationManager Instance;
 
-    private static PathNode _currentNode;
+    private PathNode _currentNode;
 
     private static List<bool> _dataPoints = new List<bool>() { false, false };
 
     public static string ActivePlanetName = "";
 
-    [SerializeField]
-    private  GameObject _enterButtton;
-
-    [SerializeField]
-    private GameObject _nextPlanetButton;
-
-    [SerializeField]
-    private GameObject _returnToLastPlanetButton;
-
-    [SerializeField]
-    private Canvas _ui;
-
-    [SerializeField]
-    private Dialogue _notEnoughDataMessage;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         if (Instance != null)
         {
@@ -37,54 +22,12 @@ public class NavigationManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(_ui);
+        //DontDestroyOnLoad(gameObject);
 
         ActivePlanetName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void UpdateUI ()
-    {
-        if (_currentNode == null)
-        {
-            _enterButtton.SetActive(false);
-            _nextPlanetButton.SetActive(false);
-            _returnToLastPlanetButton.SetActive(false);
-            return;
-        }
-        if (_currentNode.tag == "MinigameNode")
-        {
-            _enterButtton.SetActive(true);
-            _nextPlanetButton.SetActive(false);
-            _returnToLastPlanetButton.SetActive(false);
-        }
-        else if (_currentNode.tag == "EndNode")
-        {
-            _nextPlanetButton.SetActive(true);
-            _enterButtton.SetActive(false);
-            _returnToLastPlanetButton.SetActive(false);
-        }
-        else if (_currentNode.tag == "StartNode" && _currentNode.NextSceneName != "")
-        {
-            _returnToLastPlanetButton.SetActive(true);
-            _enterButtton.SetActive(false);
-            _nextPlanetButton.SetActive(false);
-        }
-        else
-        {
-            _enterButtton.SetActive(false);
-            _nextPlanetButton.SetActive(false);
-            _returnToLastPlanetButton.SetActive(false);
-        }        
-    }
-
-    public static void SetCurrentNode(PathNode node)
+    public void SetCurrentNode(PathNode node)
     {
         _currentNode = node;
     }
@@ -92,37 +35,5 @@ public class NavigationManager : MonoBehaviour
     public static void UpdateDataPoints(bool dataPoint, int minigameIndex)
     {
         _dataPoints[minigameIndex] = dataPoint; // can be expanded upon if there needs to be more than 1 data point per minigame.
-    }
-
-    public static int GetActiveDataPoint()
-    {
-        return _dataPoints.Where(x => x == true).Count();
-    }
-
-    public static void LoadNextScene()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(_currentNode.NextSceneName);
-        _currentNode = null;
-    }
-
-    public static void LoadNextPlanet()
-    {
-        if (GetActiveDataPoint() >= _currentNode.GetComponentInParent<PlanetRequirementChecker>().RequiredDataPoints)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(_currentNode.NextSceneName);
-            ActivePlanetName = _currentNode.NextSceneName;
-            _currentNode = null;
-        }
-        else
-        {
-            Instance._notEnoughDataMessage.StartDialogue();
-        }
-    }
-
-    public static void ReturnToLastPlanet()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(_currentNode.NextSceneName);
-        ActivePlanetName = _currentNode.NextSceneName;
-        _currentNode = null;
     }
 }

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public partial class OverWorldPlayer 
 {
@@ -11,6 +13,11 @@ public partial class OverWorldPlayer
 
         public override void OnEnter()
         {
+            Context.transform.position = Context._currentNode.transform.position;
+            Context._height = 0;
+            Context.transform.rotation = Context._currentNode.transform.rotation;
+
+            //add arrows
             _arrows.Clear();
             foreach(PathNode node in Context._currentNode.Conections)
             {
@@ -24,14 +31,16 @@ public partial class OverWorldPlayer
                 arrow.GetComponent<PathArrow>().ArrowClicked += (s, e) => StartMovingTo(node);
             }
 
-            NavigationManager.SetCurrentNode(Context._currentNode);
-            NavigationManager.Instance?.UpdateUI();
-
             Context._currentNode.OnPlayerLandOnNode.Invoke();
 
-            Context.transform.position = Context._currentNode.transform.position;
-            Context._height = 0;
-            Context.transform.rotation = Context._currentNode.transform.rotation;
+            if (_positionMemory.Keys.Contains(SceneManager.GetActiveScene().buildIndex))
+            {
+                _positionMemory[SceneManager.GetActiveScene().buildIndex] = Context._nodeList.IndexOf(Context._currentNode);
+            }
+            else
+            {
+                _positionMemory.Add(SceneManager.GetActiveScene().buildIndex, Context._nodeList.IndexOf(Context._currentNode));
+            }
 
             base.OnEnter();
         }

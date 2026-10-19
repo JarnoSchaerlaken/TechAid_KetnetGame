@@ -141,6 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4061099475427188949}
   - component: {fileID: 3781586947314682732}
+  - component: {fileID: -8150391750548981784}
   m_Layer: 0
   m_Name: MinigameNode
   m_TagString: MinigameNode
@@ -199,6 +200,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: -8150391750548981784}
+        m_TargetAssemblyTypeName: SceneChangeNode, Assembly-CSharp
+        m_MethodName: OnEnterNode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnPlayerLeaveNode:
     m_PersistentCalls:
       m_Calls:
@@ -214,7 +227,38 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -8150391750548981784}
+        m_TargetAssemblyTypeName: SceneChangeNode, Assembly-CSharp
+        m_MethodName: OnLeaveNode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NextSceneName: TestMinigame1
+--- !u!114 &-8150391750548981784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115812301480762772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfaafccdbba60d145a97d37450cc8bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChangeNode
+  _buttonText: Start
+  _onPressButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _requiredDataPoints: 0
+  _nextSceneName: TestMinigame1
+  _insuficientDataDialogue: {fileID: 0}
 --- !u!1 &2210529003576385826
 GameObject:
   m_ObjectHideFlags: 0
