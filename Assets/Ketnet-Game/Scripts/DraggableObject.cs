@@ -16,8 +16,6 @@ public class DraggableObject : MonoBehaviour
             //if (_clicking == value) return;
             _clicking = value;
 
-            Debug.Log(_mousePosition);
-
             if (value) OnClick();
             else OnStopClick();
         }
