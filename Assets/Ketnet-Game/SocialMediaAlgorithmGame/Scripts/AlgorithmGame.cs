@@ -1,10 +1,14 @@
 using TMPro;
+using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SocialMediaAlgorithmGame
 {
     public class AlgorithmGame : MonoBehaviour
     {
+        [SerializeField]int _minigameIndex;
+        [SerializeField]string _overworldSceneName;
         public AlgorithmTopic[] Topics;
 
         [SerializeField] GameObject _topicObject;
@@ -82,6 +86,13 @@ namespace SocialMediaAlgorithmGame
             {
                 _loseScreen.SetActive(true);
             }
+
+            ScoreManager.UpdateScore(_score, _minigameIndex);
+        }
+
+        public void ReturnToOverworld ()
+        {
+            SceneManager.LoadScene(_overworldSceneName);
         }
 
         public void SpawnTopic ()

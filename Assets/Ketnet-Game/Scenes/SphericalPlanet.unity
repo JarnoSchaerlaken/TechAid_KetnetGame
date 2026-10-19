@@ -930,6 +930,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 614446783}
     m_Modifications:
+    - target: {fileID: 1408927648653649886, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
+      propertyPath: _minigameIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2115812301480762772, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
       propertyPath: m_Name
       value: MinigameNode (2)
@@ -1119,6 +1123,10 @@ PrefabInstance:
     - target: {fileID: 2115812301480762772, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
       propertyPath: m_Name
       value: MinigameNode (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781586947314682732, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
+      propertyPath: NextSceneName
+      value: AlgorithmGame
       objectReference: {fileID: 0}
     - target: {fileID: 3781586947314682732, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
       propertyPath: _planetTransform
@@ -2099,6 +2107,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 172549106}
     m_Modifications:
+    - target: {fileID: 1408927648653649886, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
+      propertyPath: _minigameIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2115812301480762772, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
       propertyPath: m_Name
       value: MinigameNode
@@ -2546,6 +2558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 614446783}
     m_Modifications:
+    - target: {fileID: 1408927648653649886, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
+      propertyPath: _minigameIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2115812301480762772, guid: 80227ae037d765b48b28c4a9ed66c3dc, type: 3}
       propertyPath: m_Name
       value: MinigameNode (1)
