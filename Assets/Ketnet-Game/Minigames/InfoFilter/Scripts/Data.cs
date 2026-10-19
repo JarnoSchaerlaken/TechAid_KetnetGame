@@ -10,6 +10,8 @@ namespace InfoFilter
 		[SerializeField] private float _movementSpeed = 1F;
 
 		private float _outOfBoundsRadius;
+		private Vector3 _velocity;
+		private Vector3 _onStartDragPosition;
 		private Color _theme;
 
 		public Color Theme { get { return _theme; } }
@@ -31,13 +33,17 @@ namespace InfoFilter
 		}
 
 		// TODO: Should be protected, not public.
-		public override void Update()
+		public override void Start()
 		{
-			base.Update();
+			base.Start();
+			_velocity = -transform.position.normalized;
+		}
 
+		private void FixedUpdate()
+		{
 			HandleMovement();
 
-			if ( CheckOutOfBounds() )
+			if (CheckOutOfBounds())
 			{
 				Destroy(gameObject);
 			}
@@ -58,8 +64,7 @@ namespace InfoFilter
 		{
 			if (!Dragging)
 			{
-				// Placeholder logic.
-				transform.position = Vector2.MoveTowards( transform.position, new Vector2(0F, 0F), _movementSpeed * Time.deltaTime );
+				transform.position += _movementSpeed * Time.fixedDeltaTime * _velocity;
 			}
 		}
 
@@ -67,15 +72,14 @@ namespace InfoFilter
 		public override void OnStartDrag()
 		{
 			base.OnStartDrag();
-			// Cache start position
+			_onStartDragPosition = transform.position;
 		}
 
 		// TODO: Should be protected, not public.
 		public override void OnStopDrag()
 		{
 			base.OnStopDrag();
-			// Calculate a direction vector with velocity based on distance
-			// Release object with new velocity like a sling shot
+			_velocity = (transform.position - _onStartDragPosition).normalized;
 		}
 
 		private void SetTheme()
@@ -93,7 +97,6 @@ namespace InfoFilter
 					gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
 					break;
 			}
-
 		}
 	}
 }
