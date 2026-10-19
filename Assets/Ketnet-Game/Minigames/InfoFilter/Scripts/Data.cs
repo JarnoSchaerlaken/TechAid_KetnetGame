@@ -46,8 +46,7 @@ namespace InfoFilter
 		private bool CheckOutOfBounds()
 		{
 			// A primitive solution.
-			if ( ( transform.position.x < -_outOfBoundsRadius || transform.position.x > _outOfBoundsRadius )
-				&& ( transform.position.y < -_outOfBoundsRadius || transform.position.y > _outOfBoundsRadius ) )
+			if (transform.position.x < -_outOfBoundsRadius || transform.position.x > _outOfBoundsRadius || transform.position.y < -_outOfBoundsRadius || transform.position.y > _outOfBoundsRadius)
 			{
 				return true;
 			}
