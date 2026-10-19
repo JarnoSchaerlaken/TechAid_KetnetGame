@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1156906439584052480}
   - component: {fileID: 2266125916156386032}
   - component: {fileID: 5288241600291474286}
+  - component: {fileID: -840110033791392170}
+  - component: {fileID: 2631571352710553783}
   m_Layer: 0
   m_Name: LeaveNode
   m_TagString: EndNode
@@ -46,10 +48,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451243173e5af2d4596597d4283c1351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathNode
-  _planet: {fileID: 0}
+  _shape: 0
+  _planetTransform: {fileID: 0}
   Conections:
   - {fileID: 0}
   - {fileID: 0}
+  OnPlayerLandOnNode:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -840110033791392170}
+        m_TargetAssemblyTypeName: SceneChangeNode, Assembly-CSharp
+        m_MethodName: OnEnterNode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlayerLeaveNode:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -840110033791392170}
+        m_TargetAssemblyTypeName: SceneChangeNode, Assembly-CSharp
+        m_MethodName: OnLeaveNode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NextSceneName: TestPlanet2
 --- !u!114 &5288241600291474286
 MonoBehaviour:
@@ -64,6 +97,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetRequirementChecker
   RequiredDataPoints: 2
+--- !u!114 &-840110033791392170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139068965324220330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfaafccdbba60d145a97d37450cc8bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _buttonText: Ga naar volgende planeet
+  _onPressButtonEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _requiredDataPoints: 2
+  _nextSceneName: 
+  _insuficientDataDialogue: {fileID: 2631571352710553783}
+--- !u!114 &2631571352710553783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139068965324220330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0303f69c5256504f98bcd4fad78e986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  _talkOnStart: 0
+  _dialogue:
+  - Je hebt te weinig datapunten om naar de volgende planeet te gaan
+  _faceSprite: {fileID: 21300000, guid: 1dc755d91434763448c9e467356e9a6d, type: 3}
+  DialogueEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2235961257448503968
 GameObject:
   m_ObjectHideFlags: 0

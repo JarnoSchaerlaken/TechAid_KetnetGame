@@ -5,6 +5,7 @@ public class Dialogue : MonoBehaviour
 {
     [SerializeField]bool _talkOnStart;
     [SerializeField]string[] _dialogue;
+    [SerializeField]Sprite _faceSprite;
     public UnityEvent DialogueEndEvent;
 
     void Start()
@@ -14,6 +15,6 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue ()
     {
-        DialogueBox.Instance.StartDialogue(_dialogue, DialogueEndEvent);
+        DialogueBox.Instance.StartDialogue(_dialogue, _faceSprite, DialogueEndEvent);
     }
 }

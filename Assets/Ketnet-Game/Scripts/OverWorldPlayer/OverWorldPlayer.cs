@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public partial class OverWorldPlayer : MonoBehaviour
 {
@@ -7,6 +11,8 @@ public partial class OverWorldPlayer : MonoBehaviour
     [SerializeField]float _planetRadius;
     [SerializeField]GameObject _arrowObject;
     [SerializeField]Transform _modelPivot;
+    [SerializeField]List<PathNode> _nodeList = new();
+    static Dictionary<int, int> _positionMemory = new();
     PathNode _currentNode;
     OWPFSM _fsm;
 
@@ -23,13 +29,20 @@ public partial class OverWorldPlayer : MonoBehaviour
     void Awake()
     {
         _currentNode = GameObject.FindGameObjectWithTag("StartNode").GetComponent<PathNode>();
-        _fsm = new(this);
+
+        if (_positionMemory.Keys.Contains(SceneManager.GetActiveScene().buildIndex))
+        {
+            _currentNode = _nodeList[_positionMemory[SceneManager.GetActiveScene().buildIndex]];
+        }
     }
 
     void Start()
     {
+        _fsm = new(this);
+
         transform.position = _currentNode.transform.position;
-    }
+        transform.rotation = _currentNode.transform.rotation;       
+    } 
 
     void Update()
     {

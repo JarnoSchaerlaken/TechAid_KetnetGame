@@ -2,30 +2,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager
 {
-	public static ScoreManager Instance;
-
 	private static List<int> minigameScores = new List<int>(2) { 0, 0 };
-
-
-    private void Awake()
+	public static int DataPoints
 	{
-		if (Instance != null)
+		get
 		{
-			Destroy(gameObject);
-			return;
-		}
-
-		Instance = this;
-		DontDestroyOnLoad(gameObject);
-	}
-
-	private void Start()
-	{
-		if (ScoreManager.Instance != null)
-		{
-			// TODO: Write the data to the relevant UI elements.
+			int output = 0;
+			foreach(int s in minigameScores)
+			{
+				if (s >= 1000)
+				{
+					output++;
+				}
+			}
+			return output;
 		}
 	}
 
@@ -37,6 +29,7 @@ public class ScoreManager : MonoBehaviour
 
 	public static int GetScore(int minigameIndex)
 	{
+		if (minigameIndex >= minigameScores.Count) return 0;
 		return minigameScores[minigameIndex];
 	}
 
