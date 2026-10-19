@@ -117,16 +117,6 @@
                     "priority": 0
                 },
                 {
-                    "name": "TouchPosition",
-                    "type": "Value",
-                    "id": "acdb132c-0de9-429f-bf89-7b9fc9037e56",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true,
-                    "priority": 0
-                },
-                {
                     "name": "Touch",
                     "type": "Button",
                     "id": "8560764c-76dd-4266-9d8b-933ed282f287",
@@ -134,6 +124,16 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "TouchPosition",
+                    "type": "Value",
+                    "id": "acdb132c-0de9-429f-bf89-7b9fc9037e56",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
                     "priority": 0
                 }
             ],
