@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DraggableObject : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class DraggableObject : MonoBehaviour
         get { return _clicking; }
         set
         {
-            if (_clicking == value) return;
+            //if (_clicking == value) return;
             _clicking = value;
+
+            Debug.Log(_mousePosition);
 
             if (value) OnClick();
             else OnStopClick();
@@ -51,6 +54,11 @@ public class DraggableObject : MonoBehaviour
         };
 
         _cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
+    void StartClick ()
+    {
+        Clicking = true;
     }
 
     void OnEnable()
