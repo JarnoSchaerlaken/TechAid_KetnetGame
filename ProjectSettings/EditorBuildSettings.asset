@@ -23,9 +23,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Ketnet-Game/Scenes/TestScenesForMaintainingScores/AreaProgressionTestScenes/TestMinigame2.unity
     guid: 5c587dbe3c7d22d4fa65f958592ae66f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ketnet-Game/Scenes/AlgorithmGame.unity
     guid: c7ffac86fe9ea614fbda50f2551a7b66
+  - enabled: 1
+    path: Assets/Ketnet-Game/Scenes/SphericalPlanet.unity
+    guid: e5bd638f132bf3b44b192b011d0baaac
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

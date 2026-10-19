@@ -2838,9 +2838,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0303f69c5256504f98bcd4fad78e986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  _talkOnStart: 0
   _dialogue:
   - I am a test NPC
   - I have nothing of value to say
+  DialogueEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1596338875
 Transform:
   m_ObjectHideFlags: 0
@@ -3856,6 +3860,14 @@ PrefabInstance:
     - target: {fileID: 4927110309402736324, guid: c393f42396dbd5846bed9d9eef513183, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145752439368124318, guid: c393f42396dbd5846bed9d9eef513183, type: 3}
+      propertyPath: _moveTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145752439368124318, guid: c393f42396dbd5846bed9d9eef513183, type: 3}
+      propertyPath: _jumpHeight
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8845518766932955677, guid: c393f42396dbd5846bed9d9eef513183, type: 3}
       propertyPath: m_Name
