@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class DraggableObject : MonoBehaviour
 {
-    InputSystem_Actions _inputActions;
+    protected InputSystem_Actions _inputActions;
     private Vector2 _mousePosition;
     Camera _cam;
 
@@ -95,7 +95,7 @@ public class DraggableObject : MonoBehaviour
 
     public virtual void OnStopDrag () {}
 
-    bool IsMouseOverSprite ()
+    protected bool IsMouseOverSprite ()
     {
         Vector3 worldMousePos = _cam.ScreenToWorldPoint(_mousePosition);
         worldMousePos.z = 0;

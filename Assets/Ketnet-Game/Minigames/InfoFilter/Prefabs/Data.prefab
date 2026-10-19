@@ -180,3 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfoFilter.Data
   _movementSpeed: 2
+  _swipeMode: 0
+  _flickSpeed: 4
+  _minimumSwipeDistance: 0.1
