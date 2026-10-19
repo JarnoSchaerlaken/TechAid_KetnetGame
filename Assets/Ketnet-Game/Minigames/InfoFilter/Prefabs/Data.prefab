@@ -179,4 +179,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc93b90ec5cd8a48bc5686178b0b88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InfoFilter.Data
-  _movementSpeed: 1
+  _movementSpeed: 2

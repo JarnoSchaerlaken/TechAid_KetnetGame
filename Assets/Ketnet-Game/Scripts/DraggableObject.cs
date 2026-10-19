@@ -34,7 +34,7 @@ public class DraggableObject : MonoBehaviour
         }
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
         _inputActions = new();
 
@@ -96,6 +96,7 @@ public class DraggableObject : MonoBehaviour
 
         Vector3 delta = worldMousePos - transform.position;
 
+        // Assumes sprite is 1x1 in size.
         return Mathf.Abs(delta.x) < 0.5f * transform.lossyScale.x && Mathf.Abs(delta.y) < 0.5f * transform.lossyScale.y;
     }
 }

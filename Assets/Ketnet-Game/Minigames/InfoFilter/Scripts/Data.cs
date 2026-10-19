@@ -1,9 +1,11 @@
+using SocialMediaAlgorithmGame;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace InfoFilter
 {
-	public class Data : MonoBehaviour
+	public sealed class Data : DraggableObject
 	{
 		[SerializeField] private float _movementSpeed = 1F;
 
@@ -12,8 +14,10 @@ namespace InfoFilter
 
 		public Color Theme { get { return _theme; } }
 
-		private void Awake()
+		protected override void Awake()
 		{
+			base.Awake();
+
 			var dataSpawner = FindAnyObjectByType<InfoFilter.DataSpawner>();
 
 			if ( dataSpawner == null )
@@ -26,8 +30,11 @@ namespace InfoFilter
 			SetTheme();
 		}
 
-		private void Update()
+		// TODO: Should be protected, not public.
+		public override void Update()
 		{
+			base.Update();
+
 			HandleMovement();
 
 			if ( CheckOutOfBounds() )
@@ -50,8 +57,26 @@ namespace InfoFilter
 
 		private void HandleMovement()
 		{
-			// Placeholder logic.
-			transform.position = Vector2.MoveTowards( transform.position, new Vector2(0F, 0F), _movementSpeed * Time.deltaTime );
+			if (!Dragging)
+			{
+				// Placeholder logic.
+				transform.position = Vector2.MoveTowards( transform.position, new Vector2(0F, 0F), _movementSpeed * Time.deltaTime );
+			}
+		}
+
+		// TODO: Should be protected, not public.
+		public override void OnStartDrag()
+		{
+			base.OnStartDrag();
+			// Cache start position
+		}
+
+		// TODO: Should be protected, not public.
+		public override void OnStopDrag()
+		{
+			base.OnStopDrag();
+			// Calculate a direction vector with velocity based on distance
+			// Release object with new velocity like a sling shot
 		}
 
 		private void SetTheme()
