@@ -131,6 +131,7 @@ MonoBehaviour:
   _talkOnStart: 0
   _dialogue:
   - Je hebt te weinig datapunten om naar de volgende planeet te gaan
+  _faceSprite: {fileID: 21300000, guid: 1dc755d91434763448c9e467356e9a6d, type: 3}
   DialogueEndEvent:
     m_PersistentCalls:
       m_Calls: []

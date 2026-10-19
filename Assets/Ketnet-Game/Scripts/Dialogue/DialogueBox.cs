@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class DialogueBox : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DialogueBox : MonoBehaviour
     [SerializeField]float _characterWriteTime;
     float _timer;
     [SerializeField]TMP_Text _textField;
+    [SerializeField]Image _faceImage;
     [SerializeField]GameObject _dialogueBoxObject;
     List<string> _currentDialogue;
     UnityEvent _dialogueEndEvent;
@@ -34,12 +36,14 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    public void StartDialogue (string[] dialogue, UnityEvent endEvent)
+    public void StartDialogue (string[] dialogue, Sprite faceSprite, UnityEvent endEvent)
     {
         if (dialogue.Length > 0) 
         {
             _currentDialogue = dialogue.ToList();
             _currentLine = dialogue[0];
+
+            _faceImage.sprite = faceSprite;
 
             _dialogueBoxObject.SetActive(true);
 

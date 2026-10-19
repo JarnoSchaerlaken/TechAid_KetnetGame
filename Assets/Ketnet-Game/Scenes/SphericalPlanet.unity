@@ -2752,6 +2752,7 @@ MonoBehaviour:
   _dialogue:
   - I am a test NPC
   - I have nothing of value to say
+  _faceSprite: {fileID: 21300000, guid: c6e8a093df00f0d4fa282cffd0d3ab79, type: 3}
   DialogueEndEvent:
     m_PersistentCalls:
       m_Calls: []
