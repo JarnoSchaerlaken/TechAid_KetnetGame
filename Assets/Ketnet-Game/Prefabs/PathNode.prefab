@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4154466753630282035}
   m_Layer: 0
   m_Name: PathNode
-  m_TagString: MinigameNode
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,10 +135,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451243173e5af2d4596597d4283c1351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathNode
-  _planet: {fileID: 0}
+  _shape: 0
+  _planetTransform: {fileID: 0}
   Conections:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  OnPlayerLandOnNode:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerLeaveNode:
+    m_PersistentCalls:
+      m_Calls: []
   NextSceneName: TestMinigame1

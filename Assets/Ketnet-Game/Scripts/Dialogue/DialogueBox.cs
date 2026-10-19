@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogueBox : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class DialogueBox : MonoBehaviour
     [SerializeField]TMP_Text _textField;
     [SerializeField]GameObject _dialogueBoxObject;
     List<string> _currentDialogue;
+    UnityEvent _dialogueEndEvent;
     string _currentLine = "";
     int _currentLineIndex;
 
@@ -32,7 +34,7 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    public void StartDialogue (string[] dialogue)
+    public void StartDialogue (string[] dialogue, UnityEvent endEvent)
     {
         if (dialogue.Length > 0) 
         {
@@ -42,6 +44,8 @@ public class DialogueBox : MonoBehaviour
             _dialogueBoxObject.SetActive(true);
 
             _currentLineIndex = 0;
+
+            _dialogueEndEvent = endEvent;
         }
     }
 
@@ -52,6 +56,7 @@ public class DialogueBox : MonoBehaviour
 
         if (_currentDialogue.Count <= 1)
         {
+            if (_dialogueEndEvent != null) _dialogueEndEvent.Invoke();
             _dialogueBoxObject.SetActive(false);
             _currentDialogue.Clear();
             _currentLine = "";
