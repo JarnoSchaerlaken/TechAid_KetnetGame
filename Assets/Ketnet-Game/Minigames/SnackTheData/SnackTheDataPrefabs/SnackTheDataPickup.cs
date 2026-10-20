@@ -1,37 +1,24 @@
 using UnityEngine;
-namespace SnackTheData{
+namespace SnackTheData
+{
     public class SnackTheDataPickup : MonoBehaviour
     {
         [SerializeField]
         private GameObject _correspondingTailSegment;
 
-        public int Score = 100;
-
-        private GameObject _player = null;
+        public int AddedScore = 100;
 
         [SerializeField]
         private int _dataType = 0; // count starts at 0 
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
+        public float TailSegmentSpacing = 65f;
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (_player != null)
-            {
-                PickedUp(_player.GetComponent<SnackTheDataMovement>());
-            }
-        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.name == "Player")
             {
-                _player = collision.gameObject;
+                PickedUp(collision.gameObject.GetComponent<SnackTheDataMovement>());
             }
         }
 
@@ -39,25 +26,35 @@ namespace SnackTheData{
         {
             if (player.Tail.Count == 0)
             {
-                GameObject segment = Instantiate(_correspondingTailSegment, player.Player.transform.position - player.Direction * player.TailSegmentSpacing, Quaternion.identity, player.PlayField.transform);
-                player.SetSegmentToBeAdded(segment);
+                GameObject segment = Instantiate(_correspondingTailSegment, player.Player.transform.position - player.Direction * TailSegmentSpacing, Quaternion.identity, player.PlayField.transform);
+
+                player.Tail.Add(segment);
+
+                player.TailSegmentDirections.Add(Vector3.zero);
             }
             else
             {
-                GameObject segment = Instantiate(_correspondingTailSegment, player.Tail[player.Tail.Count - 1].transform.position - player.TailSegmentDirections[player.Tail.Count - 1] * player.TailSegmentSpacing, Quaternion.identity, player.PlayField.transform);
-                player.SetSegmentToBeAdded(segment);
-            }
+                GameObject segment = Instantiate(_correspondingTailSegment, player.Tail[player.Tail.Count - 1].transform.position - player.TailSegmentDirections[player.Tail.Count - 1] * TailSegmentSpacing, Quaternion.identity, player.PlayField.transform);
 
+                player.Tail.Add(segment);
+
+                player.TailSegmentDirections.Add(Vector3.zero);
+            }
+            
             if (_dataType == 0)
             {
-                player.TypeOneAmount++;
+                SnackTheDataStateTracker.TypeOneAmount++;
             }
             else if (_dataType == 1)
             {
-                player.TypeTwoAmount++;
+                SnackTheDataStateTracker.TypeTwoAmount++;
             }
 
-            SnackTheDataScoreKeeper.AddScore(Score);
+            if (!(SnackTheDataStateTracker.TypeOneAmount - SnackTheDataStateTracker.TypeTwoAmount >= SnackTheDataStateTracker.AllowedAmountBetweenHighestAndLowest || SnackTheDataStateTracker.TypeTwoAmount - SnackTheDataStateTracker.TypeOneAmount >= SnackTheDataStateTracker.AllowedAmountBetweenHighestAndLowest))
+            {
+                SnackTheDataScoreKeeper.AddScore(AddedScore);
+            }
+            
             Destroy(this.gameObject);
         }
     }

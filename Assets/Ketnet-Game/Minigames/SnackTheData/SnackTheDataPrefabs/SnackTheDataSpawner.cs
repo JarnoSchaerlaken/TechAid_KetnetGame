@@ -12,12 +12,6 @@ namespace SnackTheData
 
         private List<GameObject> _spawnedPickups = new List<GameObject>();
 
-        [SerializeField]
-        private GameObject _warningType1;
-
-        [SerializeField]
-        private GameObject _warningType2;
-
         private int _amountPickup1;
 
         private int _amountPickup2;
@@ -26,10 +20,9 @@ namespace SnackTheData
         private Image _playField;
 
         [SerializeField]
-        private SnackTheDataMovement _player;
-
-        [SerializeField]
         private int _maxPickups = 25;
+
+        public static bool Enabled = false;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -40,6 +33,7 @@ namespace SnackTheData
         // Update is called once per frame
         void Update()
         {
+            if (!Enabled) return;
             for (int i = _spawnedPickups.Count - 1; i >= 0; i--)
             {
                 if (_spawnedPickups[i] == null)
@@ -62,24 +56,6 @@ namespace SnackTheData
                 }
             }
 
-            if (_player.TypeOneAmount - _player.TypeTwoAmount >= _player.AllowedAmountBetweenHighestAndLowest - 1)
-            {
-                _warningType1.SetActive(true);
-            }
-            else
-            {
-                _warningType1.SetActive(false);
-            }
-
-            if (_player.TypeTwoAmount - _player.TypeOneAmount >= _player.AllowedAmountBetweenHighestAndLowest - 1)
-            {
-                _warningType2.SetActive(true);
-            }
-            else
-            {
-                _warningType2.SetActive(false);
-            }
-
             if (_spawnedPickups.Count < _maxPickups)
             {
                 SpawnPickup();
@@ -91,15 +67,17 @@ namespace SnackTheData
             float x = Random.Range(0.05f, 0.75f);
             float y = Random.Range(0.05f, 0.90f);
 
-            if (x > 0.37f && x < 0.47f && y > 0.45f && y < 0.55f) return;
+            Vector3 playerViewportPosition = Camera.main.ScreenToViewportPoint(SnackTheDataStateTracker.Instance.Player.transform.position);
+
+            if (x > playerViewportPosition.x - 0.05f && x < playerViewportPosition.x + 0.05f && y > playerViewportPosition.y - 0.05f && y < playerViewportPosition.y + 0.05f) return;
 
             Vector3 position = Camera.main.ViewportToScreenPoint(new Vector3(x, y, 0));
 
-            if (_amountPickup1 >= _maxPickups - _player.AllowedAmountBetweenHighestAndLowest * 3)
+            if (_amountPickup1 >= _maxPickups - SnackTheDataStateTracker.AllowedAmountBetweenHighestAndLowest * 3)
             {
                 _spawnedPickups.Add(Instantiate(_pickupPrefabs[1], position, Quaternion.identity, _playField.transform));
             }
-            else if (_amountPickup2 >= _maxPickups - _player.AllowedAmountBetweenHighestAndLowest * 3)
+            else if (_amountPickup2 >= _maxPickups - SnackTheDataStateTracker.AllowedAmountBetweenHighestAndLowest * 3)
             {
                 _spawnedPickups.Add(Instantiate(_pickupPrefabs[0], position, Quaternion.identity, _playField.transform));
             }

@@ -1,7 +1,8 @@
 using TMPro;
 using UnityEngine;
 
-namespace SnackTheData{
+namespace SnackTheData
+{
     public class SnackTheDataScoreKeeper : MonoBehaviour
     {
         [SerializeField]

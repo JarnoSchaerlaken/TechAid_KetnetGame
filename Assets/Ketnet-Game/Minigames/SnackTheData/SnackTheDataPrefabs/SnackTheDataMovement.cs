@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,43 +10,19 @@ namespace SnackTheData
     {
         public Image Player;
 
-        public int TypeOneAmount;
-
-        public int TypeTwoAmount;
-
-        public int AllowedAmountBetweenHighestAndLowest = 2;
-
         public List<GameObject> Tail = new List<GameObject>();
 
         public List<Vector3> TailSegmentDirections = new List<Vector3>();
 
         private float _speed = Screen.height / 7.5f;
 
-        public float TailSegmentSpacing = 65f;
-
         public Vector3 Direction = Vector3.zero;
-
-        public bool GameOver = false;
 
         private InputSystem_Actions _actions;
 
         private float _swipeDistance = 1f;
 
-        [SerializeField]
-        private GameObject _endScreen;
-
         public GameObject PlayField;
-
-        [SerializeField]
-        private GameObject _sidePanel;
-
-        [SerializeField]
-        private GameObject _TailTestPart1;
-
-        [SerializeField]
-        private GameObject _TailTestPart2;
-
-        private GameObject _segmentToBeAdded;
 
         private Vector2 _swipeDirection;
 
@@ -86,31 +61,20 @@ namespace SnackTheData
         // Update is called once per frame
         void Update()
         {
-            if (GameOver)
-            {
-                _sidePanel.SetActive(false);
-                PlayField.SetActive(false);
-                _endScreen.SetActive(true);
-            }
-            else
-            {
-                MovePlayer();
+            MovePlayer();
 
-                MoveTail();
+            MoveTail();
 
-                CheckDeathStatus();
-            }
-
-            UpdateTailSegments();
+            CheckDeathStatus();
         }
 
 
-        public void MovePlayer()
+        private void MovePlayer()
         {
             Player.transform.position += Direction * _speed * Time.deltaTime;
         }
 
-        public void MoveTail()
+        private void MoveTail()
         {
             if (Direction != Vector3.zero)
             {
@@ -218,50 +182,24 @@ namespace SnackTheData
             }
         }
 
-        public void CheckDeathStatus()
+        private void CheckDeathStatus()
         {
-            if (Direction != Vector3.zero)
+            Vector3 playerViewportPosition = Camera.main.ScreenToViewportPoint(Player.transform.position);
+            if (playerViewportPosition.x < 0.01f || playerViewportPosition.x > 0.83f || playerViewportPosition.y < 0.01f || playerViewportPosition.y > 0.99f)
             {
-                Vector3 playerViewportPosition = Camera.main.ScreenToViewportPoint(Player.transform.position);
-                if (playerViewportPosition.x < 0.01f || playerViewportPosition.x > 0.83f || playerViewportPosition.y < 0.01f || playerViewportPosition.y > 0.99f)
-                {
-                    GameOver = true;
-                }
+                SnackTheDataStateTracker.EndMinigame();
+            }
 
-                if (TypeOneAmount - TypeTwoAmount >= AllowedAmountBetweenHighestAndLowest || TypeTwoAmount - TypeOneAmount >= AllowedAmountBetweenHighestAndLowest)
+            if (Tail.Count > 1)
+            {
+                for (int i = 1; i < Tail.Count; i++)
                 {
-                    GameOver = true;
-                }
-
-                if (Tail.Count > 1) 
-                {
-                    for (int i = 1; i < Tail.Count; i++)
+                    if (Tail[i].GetComponent<SnackTheDataTailTrigger>().HitTail)
                     {
-                        if (Tail[i].GetComponent<SnackTheDataTailTrigger>().HitTail)
-                        {
-                            GameOver = true;
-                        }
+                        SnackTheDataStateTracker.EndMinigame();
                     }
                 }
             }
-        }
-
-
-        public void UpdateTailSegments()
-        {
-            if (_segmentToBeAdded != null)
-            {
-                Tail.Add(_segmentToBeAdded);
-
-                TailSegmentDirections.Add(Vector3.zero);
-
-                _segmentToBeAdded = null;
-            }
-        }
-
-        public void SetSegmentToBeAdded(GameObject segment)
-        {
-            _segmentToBeAdded = segment;
         }
 
         public void MoveUp()

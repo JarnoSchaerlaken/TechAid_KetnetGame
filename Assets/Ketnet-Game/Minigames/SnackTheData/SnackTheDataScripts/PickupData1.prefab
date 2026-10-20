@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SnackTheDataPickup
   _correspondingTailSegment: {fileID: 7979842340019355267, guid: 057adfa4a7edbbb41bc5c70bc95539de, type: 3}
   Score: 100
+  _dataType: 0
 --- !u!114 &1933227015318926727
 MonoBehaviour:
   m_ObjectHideFlags: 0
