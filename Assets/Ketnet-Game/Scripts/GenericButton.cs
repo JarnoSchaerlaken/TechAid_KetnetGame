@@ -6,7 +6,7 @@ public class GenericButton : MonoBehaviour
 {
     public static GenericButton Instance;
     [SerializeField]TMP_Text _text;
-    public EventHandler ButtonPressed;
+    [HideInInspector]public InteractableNode CurrentNode;
 
     void Awake()
     {
@@ -14,20 +14,25 @@ public class GenericButton : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetupButton (string text)
+    public void SetupButton (string text, InteractableNode currentNode)
     {
         gameObject.SetActive(true);
+        CurrentNode = currentNode;
         _text.text = text;
     }
 
     public void HideButton ()
     {
         gameObject.SetActive(false);
+        CurrentNode = null;
         _text.text = "";
     }
 
     public void PressButton ()
     {
-        ButtonPressed?.Invoke(this, EventArgs.Empty);
+        if (CurrentNode != null)
+        {
+            CurrentNode.OnButtonPressed();
+        }
     }
 }

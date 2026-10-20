@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1156906439584052480}
   - component: {fileID: 2266125916156386032}
-  - component: {fileID: 5288241600291474286}
   - component: {fileID: -840110033791392170}
   - component: {fileID: 2631571352710553783}
   m_Layer: 0
@@ -53,6 +52,7 @@ MonoBehaviour:
   Conections:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   OnPlayerLandOnNode:
     m_PersistentCalls:
       m_Calls:
@@ -84,19 +84,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NextSceneName: TestPlanet2
---- !u!114 &5288241600291474286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139068965324220330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fb369c96e2b6c74d91e0a42f5089cb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlanetRequirementChecker
-  RequiredDataPoints: 2
 --- !u!114 &-840110033791392170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +101,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _requiredDataPoints: 2
-  _nextSceneName: 
+  _nextSceneName: TestPlanet2
   _insuficientDataDialogue: {fileID: 2631571352710553783}
 --- !u!114 &2631571352710553783
 MonoBehaviour:
