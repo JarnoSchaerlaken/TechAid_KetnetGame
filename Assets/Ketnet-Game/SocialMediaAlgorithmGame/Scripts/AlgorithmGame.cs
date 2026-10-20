@@ -11,6 +11,8 @@ namespace SocialMediaAlgorithmGame
         [SerializeField]string _overworldSceneName;
         public AlgorithmTopic[] Topics;
 
+        [SerializeField]Phones _phones;
+
         [SerializeField] GameObject _topicObject;
         [SerializeField] Transform _topicSpawnPoint;
 
@@ -99,6 +101,7 @@ namespace SocialMediaAlgorithmGame
         {
             SocialMediaTopic t = Instantiate(_topicObject, _topicSpawnPoint.position, _topicSpawnPoint.rotation).GetComponent<SocialMediaTopic>();
             int randomIndex = Mathf.FloorToInt(Random.value * 0.99f * Topics.Length);
+            t.Phones = _phones;
             t.SetTopic(Topics[randomIndex]);
         }
 

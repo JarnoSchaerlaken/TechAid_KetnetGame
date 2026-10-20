@@ -1397,7 +1397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Datapunten: 2'
+  m_text: 'Datapunten: -1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2937,8 +2937,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
   _talkOnStart: 0
   _dialogue:
-  - I am a test NPC
-  - I have nothing of value to say
+  - Ik ben een test NPC
+  - Dat gezegd zijnde, ik heb niets te zeggen
   _faceSprite: {fileID: 21300000, guid: c6e8a093df00f0d4fa282cffd0d3ab79, type: 3}
   DialogueEndEvent:
     m_PersistentCalls:

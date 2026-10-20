@@ -7,6 +7,7 @@ namespace SocialMediaAlgorithmGame
         [SerializeField]float _xSpeed;
         [SerializeField]float _ySpeed;
         [SerializeField]SpriteRenderer _renderer;
+        [HideInInspector]public Phones Phones;
         AlgorithmTopic _topic;
 
         Vector2 _homePosition;
@@ -54,7 +55,7 @@ namespace SocialMediaAlgorithmGame
             _draggedToPosition = transform.position;
             _positionT = 0;
 
-            GameObject p = Phones.Instance.GetClosestPhone(transform.position);
+            GameObject p = Phones.GetClosestPhone(transform.position);
             if (p != null)
             {
                 p.GetComponent<Phone>().GiveTopic(_topic);
