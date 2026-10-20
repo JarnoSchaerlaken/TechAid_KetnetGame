@@ -88,9 +88,29 @@ namespace SnackTheData
                     _warningType2.SetActive(false);
                 }
 
-                if (TypeOneAmount - TypeTwoAmount >= AllowedAmountBetweenHighestAndLowest || TypeTwoAmount - TypeOneAmount >= AllowedAmountBetweenHighestAndLowest)
+                CheckDeathState();
+            }
+        }
+
+        private void CheckDeathState()
+        {
+            if (TypeOneAmount - TypeTwoAmount >= AllowedAmountBetweenHighestAndLowest || TypeTwoAmount - TypeOneAmount >= AllowedAmountBetweenHighestAndLowest)
+            {
+                EndMinigame();
+            }
+            Vector3 playerViewportPosition = Camera.main.ScreenToViewportPoint(Player.transform.position);
+            if (playerViewportPosition.x < 0.01f || playerViewportPosition.x > 0.83f || playerViewportPosition.y < 0.01f || playerViewportPosition.y > 0.99f)
+            {
+                EndMinigame();
+            }
+            if (Player.Tail.Count > 1)
+            {
+                for (int i = 1; i < Player.Tail.Count; i++)
                 {
-                    EndMinigame();
+                    if (Player.Tail[i].GetComponent<SnackTheDataTailTrigger>().HitTail)
+                    {
+                        EndMinigame();
+                    }
                 }
             }
         }

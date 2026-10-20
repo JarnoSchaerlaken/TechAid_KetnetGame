@@ -64,8 +64,6 @@ namespace SnackTheData
             MovePlayer();
 
             MoveTail();
-
-            CheckDeathStatus();
         }
 
 
@@ -177,26 +175,6 @@ namespace SnackTheData
                                 }
                             }
                         }
-                    }
-                }
-            }
-        }
-
-        private void CheckDeathStatus()
-        {
-            Vector3 playerViewportPosition = Camera.main.ScreenToViewportPoint(Player.transform.position);
-            if (playerViewportPosition.x < 0.01f || playerViewportPosition.x > 0.83f || playerViewportPosition.y < 0.01f || playerViewportPosition.y > 0.99f)
-            {
-                SnackTheDataStateTracker.EndMinigame();
-            }
-
-            if (Tail.Count > 1)
-            {
-                for (int i = 1; i < Tail.Count; i++)
-                {
-                    if (Tail[i].GetComponent<SnackTheDataTailTrigger>().HitTail)
-                    {
-                        SnackTheDataStateTracker.EndMinigame();
                     }
                 }
             }
