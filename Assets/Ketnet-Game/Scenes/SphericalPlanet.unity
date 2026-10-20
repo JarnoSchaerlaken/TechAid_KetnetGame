@@ -703,17 +703,9 @@ PrefabInstance:
       value: LeaveNode
       objectReference: {fileID: 0}
     - target: {fileID: 2266125916156386032, guid: 33c4a8e345ae32a45812dbcdb2a96f2e, type: 3}
-      propertyPath: NextSceneName
-      value: TestPlanet2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266125916156386032, guid: 33c4a8e345ae32a45812dbcdb2a96f2e, type: 3}
       propertyPath: _planetTransform
       value: 
       objectReference: {fileID: 1434403705}
-    - target: {fileID: 2266125916156386032, guid: 33c4a8e345ae32a45812dbcdb2a96f2e, type: 3}
-      propertyPath: Conections.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 2266125916156386032, guid: 33c4a8e345ae32a45812dbcdb2a96f2e, type: 3}
       propertyPath: 'Conections.Array.data[0]'
       value: 
@@ -726,18 +718,6 @@ PrefabInstance:
       propertyPath: 'Conections.Array.data[2]'
       value: 
       objectReference: {fileID: 1891612942}
-    - target: {fileID: 2631571352710553783, guid: 33c4a8e345ae32a45812dbcdb2a96f2e, type: 3}
-      propertyPath: _dialogue.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2631571352710553783, guid: 33c4a8e345ae32a45812dbcdb2a96f2e, type: 3}
-      propertyPath: '_dialogue.Array.data[0]'
-      value: Je hebt te weinig datapunten om naar de volgende planeet te gaan.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2631571352710553783, guid: 33c4a8e345ae32a45812dbcdb2a96f2e, type: 3}
-      propertyPath: '_dialogue.Array.data[1]'
-      value: Je hebt er 2 nodig.
-      objectReference: {fileID: 0}
     - target: {fileID: 5288241600291474286, guid: 33c4a8e345ae32a45812dbcdb2a96f2e, type: 3}
       propertyPath: RequiredDataPoints
       value: 1

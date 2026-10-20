@@ -9,8 +9,17 @@ public class ScoreReader : MonoBehaviour
     [SerializeField]
     private int _minigameIndex;
 
+    [SerializeField]bool _isHighScore;
+
     void Update()
     {
-        _minigameScore.text = ScoreManager.GetScore(_minigameIndex).ToString();
+        if (_isHighScore)
+        {
+            _minigameScore.text = ScoreManager.GetHighScore(_minigameIndex).ToString();
+        }
+        else
+        {
+            _minigameScore.text = ScoreManager.GetScore(_minigameIndex).ToString();
+        }
     }
 }

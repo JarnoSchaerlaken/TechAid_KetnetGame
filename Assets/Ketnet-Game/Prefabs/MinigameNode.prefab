@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScoreReader
   _minigameScore: {fileID: 2961412013525157702}
   _minigameIndex: 0
+  _isHighScore: 1
 --- !u!1 &2115812301480762772
 GameObject:
   m_ObjectHideFlags: 0
