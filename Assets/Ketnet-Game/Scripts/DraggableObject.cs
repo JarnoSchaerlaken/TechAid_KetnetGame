@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class DraggableObject : MonoBehaviour
 {
-    InputSystem_Actions _inputActions;
+    protected InputSystem_Actions _inputActions;
     private Vector2 _mousePosition;
     Camera _cam;
 
@@ -35,7 +35,7 @@ public class DraggableObject : MonoBehaviour
         }
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
         _inputActions = new();
 
@@ -95,13 +95,14 @@ public class DraggableObject : MonoBehaviour
 
     public virtual void OnStopDrag () {}
 
-    bool IsMouseOverSprite ()
+    protected bool IsMouseOverSprite ()
     {
         Vector3 worldMousePos = _cam.ScreenToWorldPoint(_mousePosition);
         worldMousePos.z = 0;
 
         Vector3 delta = worldMousePos - transform.position;
 
+        // Assumes sprite is 1x1 in size.
         return Mathf.Abs(delta.x) < 0.5f * transform.lossyScale.x && Mathf.Abs(delta.y) < 0.5f * transform.lossyScale.y;
     }
 }
